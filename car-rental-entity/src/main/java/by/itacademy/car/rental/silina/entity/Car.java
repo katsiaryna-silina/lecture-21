@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Builder
-@Table(name = "car")
+@Table(name = "CAR")
 @Getter
 @Setter
 @ToString

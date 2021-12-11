@@ -15,7 +15,7 @@ import java.util.Collection;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "car_model")
+@Table(name = "CAR_MODEL")
 public class CarModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

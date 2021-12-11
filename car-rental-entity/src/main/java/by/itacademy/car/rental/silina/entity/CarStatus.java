@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Builder
-@Table(name = "car_status")
+@Table(name = "CAR_STATUS")
 @Getter
 @Setter
 @ToString

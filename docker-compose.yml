@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  database:
+    image: mysql:8.0.27
+    hostname: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: CAR_RENTAL
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: adminPass
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./car-rental-persistence/src/main/resources:/docker-entrypoint-initdb.d
