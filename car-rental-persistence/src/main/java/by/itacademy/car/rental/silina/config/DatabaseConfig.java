@@ -3,10 +3,7 @@ package by.itacademy.car.rental.silina.config;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -22,6 +19,7 @@ import java.util.Properties;
 @PropertySource("classpath:db.properties")
 @EnableJpaRepositories(basePackages = "by.itacademy.car.rental.silina.dao")
 @EnableTransactionManagement
+@ComponentScan(basePackages = "by.itacademy.car.rental.silina.dao")
 public class DatabaseConfig {
     @Value("${jdbc.driverClassName}")
     private String driverName;

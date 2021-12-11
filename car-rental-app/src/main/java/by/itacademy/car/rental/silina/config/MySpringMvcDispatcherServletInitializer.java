@@ -6,6 +6,7 @@ import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.annotation.Nonnull;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
@@ -24,12 +25,13 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
     }
 
     @Override
+    @Nonnull
     protected String[] getServletMappings() {
         return new String[]{"/*"};
     }
 
     @Override
-    public void onStartup(ServletContext aServletContext) throws ServletException {
+    public void onStartup(@Nonnull ServletContext aServletContext) throws ServletException {
         super.onStartup(aServletContext);
         registerHiddenFieldFilter(aServletContext);
     }

@@ -1,7 +1,6 @@
 package by.itacademy.car.rental.silina.entity;
 
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -31,9 +30,12 @@ public class CarStatus {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
+
         CarStatus carStatus = (CarStatus) o;
-        return id != null && Objects.equals(id, carStatus.id);
+
+        if (!Objects.equals(id, carStatus.id)) return false;
+        return Objects.equals(status, carStatus.status);
     }
 
     @Override

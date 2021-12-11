@@ -2,9 +2,8 @@ package by.itacademy.car.rental.silina.dao.impl;
 
 import by.itacademy.car.rental.silina.dao.DAO;
 import by.itacademy.car.rental.silina.entity.Car;
-import lombok.AllArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -13,11 +12,11 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Repository
-@AllArgsConstructor
+@Slf4j
 public class CarDAOImpl implements DAO<Car> {
     @PersistenceContext
-    private final EntityManager entityManager;
-    private final Logger logger = LoggerFactory.getLogger(CarDAOImpl.class);
+    @Qualifier("entityManagerFactory")
+    private EntityManager entityManager;
 
     @Override
     public Car get(@NotNull Integer id) {
@@ -33,24 +32,21 @@ public class CarDAOImpl implements DAO<Car> {
     @Override
     public Car save(@NotNull Car car) {
         entityManager.persist(car);
-        logger.info("{} has been saved to the database", car);
+        log.info("{} has been saved to the database", car);
         return car;
-
     }
 
     @Override
     public Car update(@NotNull Car car) {
         entityManager.merge(car);
-        logger.info("{} has been updated in the database", car);
+        log.info("{} has been updated in the database", car);
         return car;
-
     }
 
     @Override
     public Car delete(@NotNull Car car) {
         entityManager.remove(car);
-        logger.info("{} has been deleted from the database", car);
+        log.info("{} has been deleted from the database", car);
         return car;
-
     }
 }
