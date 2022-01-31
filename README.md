@@ -44,5 +44,3 @@ or:
 
 - Use Tomcat Manager from browser
 - Click on browse and chose war file to deploy it.
-
-
